@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getProductos } from "../services/productsService";
 import ProductCard from "../components/ProductCard";
-import "./Productos.css";
+import "../styles/Productos.css"
 
 export default function Productos() {
   const [productos, setProductos] = useState([]);
