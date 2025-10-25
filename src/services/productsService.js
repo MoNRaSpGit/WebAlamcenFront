@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://webalmacenbackend.onrender.com/api", // tu backend en Render
+  baseURL: "https://webalmacenbackend.onrender.com/api",
 });
 
 export const getProductos = async () => {
