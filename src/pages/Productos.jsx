@@ -3,8 +3,7 @@ import { getProductos } from "../services/productsService";
 import ProductCard from "../components/ProductCard";
 import "../styles/Productos.css";
 
-
-export default function Productos() {
+export default function Productos({ carrito, setCarrito }) {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
@@ -12,6 +11,12 @@ export default function Productos() {
       .then(setProductos)
       .catch((err) => console.error("❌ Error cargando productos:", err));
   }, []);
+
+  const agregarAlCarrito = (producto) => {
+    if (!carrito.some((p) => p.id === producto.id)) {
+      setCarrito([...carrito, producto]);
+    }
+  };
 
   return (
     <div className="productos-container">
@@ -22,7 +27,11 @@ export default function Productos() {
       ) : (
         <div className="productos-grid">
           {productos.map((p) => (
-            <ProductCard key={p.id} producto={p} />
+            <ProductCard
+              key={p.id}
+              producto={p}
+              onAgregar={() => agregarAlCarrito(p)}
+            />
           ))}
         </div>
       )}

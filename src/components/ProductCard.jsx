@@ -1,6 +1,6 @@
 import "../styles/ProductCard.css";
 
-export default function ProductCard({ producto }) {
+export default function ProductCard({ producto, onAgregar }) {
   return (
     <div className="product-card">
       <img
@@ -11,7 +11,9 @@ export default function ProductCard({ producto }) {
       <h3 className="product-name">{producto.name}</h3>
       <p className="product-price">${producto.price}</p>
       <p className="product-desc">{producto.description || "Sin descripción"}</p>
-      <button className="btn-add">Agregar al carrito</button>
+      <button className="btn-add" onClick={onAgregar}>
+        Agregar al carrito
+      </button>
     </div>
   );
 }
