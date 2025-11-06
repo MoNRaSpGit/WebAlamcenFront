@@ -1,0 +1,130 @@
+/* ====== Fondo y contenedor (mobile-first) ====== */
+.demo-wrap {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background:
+    radial-gradient(900px 400px at 10% -10%, rgba(13,110,253,0.06), transparent 60%),
+    radial-gradient(700px 320px at 110% 10%, rgba(13,110,253,0.08), transparent 60%),
+    linear-gradient(180deg, #f7f8fa 0%, #eef2f7 100%);
+}
+
+/* ====== Card ====== */
+.demo-card {
+  width: 100%;
+  max-width: 760px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.06),
+    0 2px 8px rgba(0, 0, 0, 0.05);
+  animation: cardEnter 320ms ease-out both;
+}
+
+@keyframes cardEnter {
+  from { transform: translateY(8px); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+
+/* ====== Tipografía ====== */
+.demo-title {
+  margin: 0 0 10px;
+  font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+  line-height: 1.2;
+  color: #0b1220;
+  letter-spacing: 0.2px;
+}
+
+.demo-lead {
+  margin: 6px 0 12px;
+  color: #394150;
+  line-height: 1.6;
+  font-size: clamp(0.98rem, 2.8vw, 1.05rem);
+}
+
+.demo-list {
+  margin: 10px 0 18px 18px;
+  color: #404959;
+  line-height: 1.55;
+  font-size: clamp(0.96rem, 2.6vw, 1rem);
+}
+
+/* ====== Progreso y contador ====== */
+.demo-progress { margin-top: 6px; }
+
+.progress-bar {
+  height: 12px;
+  background: #e9edf3;
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+  outline: 1px solid rgba(0,0,0,0.02);
+}
+
+.progress-bar__fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #0d6efd, #4aa3ff);
+  transition: width 400ms ease;
+}
+
+.countdown {
+  margin-top: 10px;
+  font-weight: 600;
+  color: #0b1220;
+  font-size: 0.98rem;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.countdown__num {
+  display: inline-block;
+  min-width: 2ch;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  background: #eef5ff;
+  color: #0d6efd;
+  border-radius: 8px;
+  padding: 2px 8px;
+}
+
+/* ====== Acciones ====== */
+.demo-actions {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.btn {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  color: #fff;
+  background: #0d6efd;
+  transition: background 180ms ease, transform 120ms ease;
+}
+.btn-primary:hover  { background: #0c5dde; }
+.btn-primary:active { transform: translateY(1px); }
+
+/* ====== Desktop tweaks ====== */
+@media (min-width: 768px) {
+  .demo-card { padding: 26px; }
+  .demo-actions { margin-top: 16px; }
+}
+
+/* ====== Respeto a reduce motion ====== */
+@media (prefers-reduced-motion: reduce) {
+  .demo-card { animation: none; }
+  .progress-bar__fill { transition: none; }
+}

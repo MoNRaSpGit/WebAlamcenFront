@@ -1,0 +1,98 @@
+/* src/styles/Operador.css */
+.op-wrap {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.op-title {
+  text-align: center;
+  margin-bottom: 16px;
+  color: #222;
+}
+
+.op-empty {
+  text-align: center;
+  color: #555;
+}
+
+/* Tarjeta operador (un poco más “pro”) */
+.op-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  padding: 14px;
+}
+
+.op-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.op-id {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #0b1220;
+}
+
+.op-badge {
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.op-badge.pendiente { background: #f59e0b; }
+.op-badge.en_proceso { background: #3b82f6; }
+.op-badge.listo { background: #10b981; }
+
+.op-items {
+  list-style: none;
+  padding: 8px 0 0;
+  margin: 8px 0 0;
+  border-top: 1px dashed #e5e7eb;
+}
+.op-items li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: 8px 0;
+  border-bottom: 1px dashed #eef2f7;
+}
+.op-items li:last-child { border-bottom: 0; }
+
+.op-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  color: #374151;
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+.op-foot {
+  margin-top: 10px;
+  color: #6b7280;
+  font-size: 0.92rem;
+}
+
+/* src/styles/Operador.css – agrega si te falta */
+.op-video { margin-top: 20px; padding: 12px; background: #f5faff; border-radius: 12px; }
+.op-video-title { margin: 0 0 8px; }
+.op-video-player { width: 100%; max-width: 900px; display: block; border-radius: 12px; margin: 0 auto; }
+.op-video-note { margin-top: 6px; color: #666; font-size: 0.9rem; text-align: center; }
+
+
+/* Móvil */
+@media (max-width: 420px) {
+  .op-card { padding: 12px; }
+}
+
+
+
+
+
+

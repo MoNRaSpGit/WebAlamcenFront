@@ -1,0 +1,93 @@
+.acc {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  margin-top: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.06);
+}
+
+/* CABECERA */
+.acc-head {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  background: #f9fafb;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.acc-title {
+  font-weight: 600;
+  color: #0b1220;
+}
+
+/* ESTADOS (badge) */
+.acc-badge {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.acc-badge.pendiente {
+  background: #f59e0b; /* amarillo */
+}
+.acc-badge.en_proceso {
+  background: #3b82f6; /* azul */
+}
+.acc-badge.listo {
+  background: #10b981; /* verde */
+}
+
+/* ICONO */
+.acc-caret {
+  color: #6b7280;
+  transition: transform .18s ease;
+  font-size: 1.1rem;
+}
+
+.acc-caret.rot {
+  transform: rotate(180deg);
+}
+
+/* CUERPO */
+.acc-body {
+  padding: 14px;
+  border-top: 1px solid #e5e7eb;
+  background: #fff;
+}
+
+/* LISTA INTERNA */
+.acc-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.acc-list li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: 6px 0;
+  border-bottom: 1px dashed #e5e7eb;
+  font-size: .95rem;
+}
+
+.acc-list li:last-child {
+  border-bottom: none;
+}
+
+.acc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  color: #374151;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}

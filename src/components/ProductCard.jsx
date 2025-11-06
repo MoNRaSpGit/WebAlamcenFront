@@ -1,8 +1,8 @@
 import "../styles/ProductCard.css";
 
-export default function ProductCard({ producto, onAgregar }) {
+export default function ProductCard({ producto, onAgregar, highlight }) {
   return (
-    <div className="product-card">
+    <div className={`product-card ${highlight ? "is-highlight" : ""}`}>
       <img
         src={producto.image || "/placeholder.png"}
         alt={producto.name}
