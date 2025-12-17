@@ -109,6 +109,11 @@
   font-size: 0.95rem;
 }
 
+.demo-list li {
+  display: flex;
+  align-items: center;
+}
+
 .btn-primary {
   color: #fff;
   background: #0d6efd;

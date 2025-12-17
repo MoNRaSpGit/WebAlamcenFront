@@ -14,6 +14,8 @@ export default function Operador({ lastOrder }) {
   const [showVideo, setShowVideo] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false); // overlay si autoplay con audio fue bloqueado
 
+  const DEFAULT_RATE = 1.5; // ✅ velocidad por defecto
+
   // Si no hay pedido, redirigimos (mantiene coherencia del flujo)
   useEffect(() => {
     if (!lastOrder) {
@@ -32,6 +34,10 @@ export default function Operador({ lastOrder }) {
       const tryAutoplayWithSound = async () => {
         const v = videoRef.current;
         if (!v) return;
+
+        // ✅ setear velocidad antes de reproducir
+        v.playbackRate = DEFAULT_RATE;
+
         v.muted = false; // queremos audio
         try {
           await v.play(); // muchos navegadores bloquearán esto sin gesto del usuario
@@ -40,10 +46,13 @@ export default function Operador({ lastOrder }) {
           // Si falla, mostramos overlay para que el usuario toque y se habilite el audio
           setShowOverlay(true);
           try {
-            // Como fallback, intentamos comenzar en silencio para que aparezca el frame del video
+            // fallback: comenzar en silencio para que aparezca el frame del video
             v.muted = true;
+
+            // ✅ asegurar velocidad también en el fallback
+            v.playbackRate = DEFAULT_RATE;
+
             await v.play();
-            // quedamos reproduciendo sin audio hasta que el usuario toque el botón del overlay
           } catch {
             // si también falla, esperamos al toque del usuario
           }
@@ -67,11 +76,22 @@ export default function Operador({ lastOrder }) {
     if (!v) return;
     try {
       v.muted = false;
+
+      // ✅ asegurar velocidad cuando el usuario toca el botón
+      v.playbackRate = DEFAULT_RATE;
+
       await v.play(); // ahora hay gesto del usuario → debe permitir audio
       setShowOverlay(false);
     } catch (e) {
       console.error("No se pudo reproducir con sonido:", e);
     }
+  };
+
+  // ✅ extra: al cargar metadata, re-aplicamos la velocidad por si el navegador la resetea
+  const handleLoadedMetadata = () => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.playbackRate = DEFAULT_RATE;
   };
 
   return (
@@ -89,20 +109,23 @@ export default function Operador({ lastOrder }) {
               controls
               autoPlay
               playsInline
-              // IMPORTANTE: no ponemos muted por defecto porque queremos AUDIO.
-              // Si autoplay con sonido es bloqueado, mostramos overlay con botón.
               preload="metadata"
+              onLoadedMetadata={handleLoadedMetadata} // ✅ garantiza 1.5x al cargar
               onError={(e) => console.error("❌ No se pudo cargar /Video1.mp4", e)}
             />
 
             {/* Overlay si el navegador bloqueó autoplay con sonido */}
             {showOverlay && (
-              <div className="op-video-overlay" role="dialog" aria-label="Reproducir con sonido">
+              <div
+                className="op-video-overlay"
+                role="dialog"
+                aria-label="Reproducir con sonido"
+              >
                 <button className="op-video-playbtn" onClick={handlePlayWithSound}>
                   🔊 Reproducir con sonido
                 </button>
                 <p className="op-video-hint">Tocá/clic para habilitar el audio.</p>
-            </div>
+              </div>
             )}
           </div>
         )}

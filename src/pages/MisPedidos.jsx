@@ -52,7 +52,7 @@ export default function MisPedidos({ lastOrder }) {
     setHighlightStatus(false);
 
     setShowNext(true);
-    setNextSeconds(4);
+    setNextSeconds(10);
   };
 
   return (

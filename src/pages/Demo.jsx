@@ -1,5 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import { ShoppingBag, ShoppingCart, BadgeCheck, ReceiptText } from "lucide-react";
+
 import "../styles/Demo.css"; // CSS en src/styles
 
 export default function Demo() {
@@ -75,7 +77,7 @@ export default function Demo() {
         aria-labelledby="demo-title"
       >
         <h1 id="demo-title" className="demo-title">
-          Demo automática — WebAlmacén 🏪
+          Demo automática —  e-commerce
         </h1>
 
         <p className="demo-lead">
@@ -87,11 +89,24 @@ export default function Demo() {
         </p>
 
         <ul className="demo-list">
-          <li>🛍️ Selección simulada de productos</li>
-          <li>🧺 Carrito actualizado automáticamente</li>
-          <li>🧾 Confirmación y guardado del pedido</li>
-          <li>🖨️ Vista de ticket de impresión (simulada)</li>
+          <li>
+            <ShoppingBag size={18} style={{ marginRight: 8 }} />
+            Selección simulada de productos
+          </li>
+          <li>
+            <ShoppingCart size={18} style={{ marginRight: 8 }} />
+            Carrito actualizado automáticamente
+          </li>
+          <li>
+            <BadgeCheck size={18} style={{ marginRight: 8 }} />
+            Confirmación y guardado del pedido
+          </li>
+          <li>
+            <ReceiptText size={18} style={{ marginRight: 8 }} />
+            Vista de ticket de impresión (simulada)
+          </li>
         </ul>
+
 
         <div className="demo-progress" aria-live="polite">
           <div className="progress-bar">

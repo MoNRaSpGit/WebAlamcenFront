@@ -4,6 +4,8 @@ import { enviarPedido } from "../services/pedidosService";
 import { useEffect, useRef, useState, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import GuideBanner from "../components/GuideBanner";
+import { ShoppingCart, Trash2 } from "lucide-react";
+
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -130,7 +132,10 @@ export default function Carrito({ carrito, setCarrito, setLastOrder }) {
 
   return (
     <div className="carrito-container">
-      <h2 className="carrito-title">🧺 Carrito de Compras</h2>
+      <h2 className="carrito-title">
+        <ShoppingCart size={22} style={{ marginRight: 8 }} />
+        Carrito de Compras
+      </h2>
 
       {carrito.length === 0 ? (
         <p className="carrito-vacio">Tu carrito está vacío.</p>
