@@ -89,7 +89,7 @@ export default function Carrito({ carrito, setCarrito, setLastOrder }) {
   useEffect(() => {
     if (isDemo && carrito.length > 0) {
       setShowGuide(true);
-      setGuideSeconds(4);
+      setGuideSeconds(10);
     }
   }, [isDemo, carrito.length]);
 
