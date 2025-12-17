@@ -14,7 +14,41 @@ export default function Demo() {
     [seconds]
   );
 
-  // ⏱️ Cuenta regresiva automática
+  /* ======================================================
+     🚀 PREFETCH DE PRODUCTOS (apenas entra a la demo)
+     ====================================================== */
+  useEffect(() => {
+    const controller = new AbortController();
+
+    (async () => {
+      try {
+        // evita pedir de nuevo si ya están cacheados
+        const cached = sessionStorage.getItem("demo_productos");
+        if (cached) return;
+
+        const res = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/productos`,
+          { signal: controller.signal }
+        );
+
+        if (!res.ok) return;
+
+        const data = await res.json();
+
+        sessionStorage.setItem("demo_productos", JSON.stringify(data));
+        sessionStorage.setItem("demo_productos_ts", String(Date.now()));
+      } catch (err) {
+        // Render puede estar dormido → no rompemos la demo
+        console.warn("Prefetch productos falló (demo):", err);
+      }
+    })();
+
+    return () => controller.abort();
+  }, []);
+
+  /* ======================================================
+     ⏱️ Cuenta regresiva automática
+     ====================================================== */
   useEffect(() => {
     if (seconds <= 0) {
       navigate("/productos", { state: { demo: true } });
@@ -76,9 +110,9 @@ export default function Demo() {
 
         <div className="demo-actions">
           <button
-            type="button"           // ⛔ evita submit / reload
+            type="button" // ⛔ evita submit / reload
             className="btn btn-primary"
-            onClick={startNow}      // ▶️ arranque inmediato
+            onClick={startNow}
           >
             Iniciar ahora
           </button>
