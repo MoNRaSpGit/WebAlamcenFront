@@ -11,7 +11,7 @@ export default function Carrito({ carrito, setCarrito, setLastOrder }) {
   const [loading, setLoading] = useState(false);
   const [highlightIndex, setHighlightIndex] = useState(null);
   const [showGuide, setShowGuide] = useState(false);
-  const [guideSeconds, setGuideSeconds] = useState(4);
+  const [guideSeconds, setGuideSeconds] = useState(10);
   const [pulseFinish, setPulseFinish] = useState(false);
   const [hasShowcased, setHasShowcased] = useState(false);
 

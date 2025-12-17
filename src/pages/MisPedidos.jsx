@@ -10,10 +10,10 @@ export default function MisPedidos({ lastOrder }) {
   const navigate = useNavigate();
 
   const [showGuide, setShowGuide] = useState(true);
-  const [guideSeconds, setGuideSeconds] = useState(4);
+  const [guideSeconds, setGuideSeconds] = useState(10);
 
   const [showNext, setShowNext] = useState(false);
-  const [nextSeconds, setNextSeconds] = useState(4);
+  const [nextSeconds, setNextSeconds] = useState(10);
 
   const [highlightBox, setHighlightBox] = useState(false);
   const [highlightStatus, setHighlightStatus] = useState(false);

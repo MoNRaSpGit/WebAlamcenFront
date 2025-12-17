@@ -10,11 +10,7 @@ export default function Navbar({ cartCount }) {
   return (
     <nav className="navbar">
       <h1 className="navbar-logo">WebAlmacén 🏪</h1>
-      <div className="navbar-links">
-        <Link to="/productos" className={is("/productos")}>Productos</Link>
-        <Link to="/carrito" className={is("/carrito")}>Carrito ({cartCount})</Link>
-        <Link to="/mis-pedidos" className={is("/mis-pedidos")}>Mis Pedidos</Link>
-      </div>
+     
     </nav>
   );
 }

@@ -11,7 +11,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 export default function Productos({ carrito, setCarrito }) {
   const [productos, setProductos] = useState([]);
   const [showGuide, setShowGuide] = useState(false);
-  const [guideSeconds, setGuideSeconds] = useState(5); // ⏱️ cuenta del cartel
+  const [guideSeconds, setGuideSeconds] = useState(10); // ⏱️ cuenta del cartel
   const [highlightId, setHighlightId] = useState(null);
   const navigate = useNavigate();
 
