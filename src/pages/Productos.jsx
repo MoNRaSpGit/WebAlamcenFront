@@ -174,7 +174,7 @@ export default function Productos({ carrito, setCarrito }) {
           title="Simulación de selección"
           text={
             productos.length === 0
-              ? "Cargando productos... (Render gratis puede demorar unos segundos)"
+              ? "Cargando productos... "
               : "Ahora vamos a simular la selección de 3 productos. Se agregarán automáticamente al carrito, uno por uno."
           }
           seconds={guideSeconds}
